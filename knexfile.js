@@ -1,4 +1,5 @@
 import "dotenv/config";
+// Update with your config settings.
 
 export default {
   client: "mysql2",
