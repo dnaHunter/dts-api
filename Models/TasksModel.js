@@ -1,12 +1,45 @@
-async function getAllTask(req, res) {}
+import initKnex from "knex";
+import configuration from "../knexfile.js";
 
-async function getTaskID(req, res) {}
+const knex = initKnex(configuration);
 
-async function createTask(req, res) {}
+async function getAllTask() {
+  try {
+    const list = await knex("tasks").select();
+    return list;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+}
 
-async function updateStatus(req, res) {}
+async function getTaskID(id) {
+  try {
+    const task = await knex("tasks").where("id", id);
+    return task;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+}
 
-async function deleteTask(req, res) {}
+async function createTask(body) {
+  try {
+    const [id] = await knex("tasks").insert(body);
+    console.log("id " + id);
+
+    const newTask = await knex("tasks").where("id", id).first();
+    console.log(newTask);
+    return newTask;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+}
+
+async function updateStatus() {}
+
+async function deleteTask() {}
 
 export default {
   getAllTask,
