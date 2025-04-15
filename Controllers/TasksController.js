@@ -20,17 +20,8 @@ async function getTaskID(req, res) {
   res.json(data);
 }
 
-// const body = {
-//     "title":"New Task",
-//     "status":"Not Started",
-//     "due_date": Date.now()
-// }
-
-// return JSON.stringify(body);
-
 async function createTask(req, res) {
   const body = req.body;
-  console.log(req.body);
 
   if (!body.title || !body.status || !body.due_date) {
     return res
@@ -49,9 +40,34 @@ async function createTask(req, res) {
   res.json(newTask);
 }
 
-async function updateStatus(req, res) {}
+async function updateStatus(req, res) {
+  const body = req.body;
 
-async function deleteTask(req, res) {}
+  if (!body.status) {
+    return res
+      .status(400)
+      .json({ message: "A status message is needed in the body." });
+  }
+
+  const newStatus = await TasksModel.updateStatus(
+    req.params.id,
+    req.body.status
+  );
+
+  if (!newStatus) {
+    return res
+      .status(400)
+      .json({ message: "Request encountered an error. Check the request." });
+  }
+
+  res.json(newStatus);
+}
+
+async function deleteTask(req, res) {
+  const deleted = await TasksModel.deleteTask(req.params.id);
+
+  res.status(200).json({ message: "Successfully deleted" });
+}
 
 export default {
   getAllTask,

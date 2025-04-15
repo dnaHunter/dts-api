@@ -37,9 +37,27 @@ async function createTask(body) {
   }
 }
 
-async function updateStatus() {}
+async function updateStatus(id, status) {
+  try {
+    const newStatus = knex("tasks").update({ status }).where("id", id);
 
-async function deleteTask() {}
+    return newStatus;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+}
+
+async function deleteTask(id) {
+  try {
+    const deleted = knex("tasks").where("id", id).del();
+
+    return deleted;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+}
 
 export default {
   getAllTask,
