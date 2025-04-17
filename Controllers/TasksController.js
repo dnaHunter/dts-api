@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import TasksModel from "../Models/TasksModel.js";
 
 async function getAllTask(req, res) {
@@ -28,6 +29,8 @@ async function createTask(req, res) {
       .status(400)
       .json({ message: "A task needs a title, status and due date" });
   }
+
+  body.due_date = dayjs(body.due_date).toDate();
 
   const newTask = await TasksModel.createTask(body);
 

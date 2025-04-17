@@ -14,7 +14,7 @@ app.use(express.json());
 
 app.get("/tasks", TasksController.getAllTask);
 app.get("/tasks/:id", TasksController.getTaskID);
-app.post("/task", TasksController.createTask);
+app.post("/tasks", TasksController.createTask);
 app.patch("/status/:id", TasksController.updateStatus);
 app.delete("/:id", TasksController.deleteTask);
 

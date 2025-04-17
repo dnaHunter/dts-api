@@ -15,7 +15,7 @@ async function getAllTask() {
 
 async function getTaskID(id) {
   try {
-    const task = await knex("tasks").where("id", id);
+    const task = await knex("tasks").where("id", id).first();
     return task;
   } catch (error) {
     console.error(error);
@@ -26,7 +26,8 @@ async function getTaskID(id) {
 async function createTask(body) {
   try {
     const [id] = await knex("tasks").insert(body);
-    console.log("id " + id);
+    console.log(id);
+    
 
     const newTask = await knex("tasks").where("id", id).first();
     console.log(newTask);
