@@ -13,7 +13,7 @@ export async function seed(knex) {
   for (let i = 1; i < 10; i++) {
     data.push({
       title: `Task ${i}`,
-      description: i % 2 == 0 && "Do Task ${i}",
+      description: i % 2 == 0 && `Do Task ${i}. To do this task you must ...`,
       status: "pending",
       due_date: dayjs()
         .add(Math.floor(Math.random() * 10) + 1, "days")
