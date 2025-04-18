@@ -1,5 +1,10 @@
 # DTS API
 
+## Requirements
+
+- Mysql - Can be downloaded [here](https://dev.mysql.com/downloads/installer/)
+- javascript
+
 ## Installation
 
 - Clone both [this](https://github.com/dnaHunter/dts-api) and the [frontend repository]() onto your own systems. Follow the instruction on the read me there to run it.
@@ -12,7 +17,7 @@
 
 - Run `npm run migrate` to create the tables in the database.
 
-- Run `npm run seed` to create mock data in the database;
+- If you want mock data to display run `npm run seed` to create mock data in the database;
 
 - Finally run `npm start` to start the server.
 
@@ -26,3 +31,15 @@
   - express
   - dayjs
   - dotenv
+
+## Endpoints
+
+- Get "/tasks" retrives the title, description, status and due date for all tasks. Returns and array of task objects.
+
+- Get "/tasks/:id" retrives the title, description, status and due date for the id specified. Returns a task object.
+
+- Post ".tasks" inserts a new task into the database. This needs a object with a title, status, due_date and optionally a description properties attached as the body. It returns the task object with an id.
+
+- Patch "/status/:id" updates the status field of the task with the specified id. This needs a status object in the body.
+
+- Delete "/id" this deletes task with the corresponding id.
