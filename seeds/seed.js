@@ -10,7 +10,7 @@ export async function seed(knex) {
 
   let data = [];
 
-  for (let i = 1; i < 10; i++) {
+  for (let i = 1; i < 30; i++) {
     data.push({
       title: `Task ${i}`,
       description: i % 2 == 0 && `Do Task ${i}. To do this task you must ...`,
