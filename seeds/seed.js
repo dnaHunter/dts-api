@@ -10,14 +10,14 @@ export async function seed(knex) {
 
   let data = [];
 
-  for (let i = 1; i < 30; i++) {
+  let now = dayjs().subtract(3, "days");
+
+  for (let i = 1; i < 25; i++) {
     data.push({
       title: `Task ${i}`,
       description: i % 2 == 0 && `Do Task ${i}. To do this task you must ...`,
       status: "pending",
-      due_date: dayjs()
-        .add(Math.floor(Math.random() * 10) + 1, "days")
-        .toDate(),
+      due_date: now.add(i, "days").toDate(),
     });
   }
 
