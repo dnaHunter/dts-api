@@ -1,5 +1,7 @@
 # DTS API
 
+This is the backend repository for my DTS interview test by Daniel Aston. This is paired with the frontend repository which can be found [here](https://github.com/dnaHunter/dts-frontend).
+
 ## Requirements
 
 - Mysql - Can be downloaded [here](https://dev.mysql.com/downloads/installer/)
@@ -7,7 +9,7 @@
 
 ## Installation
 
-- Clone both [this](https://github.com/dnaHunter/dts-api) and the [frontend repository]() onto your own systems. Follow the instruction on the read me there to run it.
+- Clone both [this](https://github.com/dnaHunter/dts-api) and the [frontend repository](https://github.com/dnaHunter/dts-frontend) onto your own systems. Follow the instruction on the read me there to run it.
 
 - Run `npm i` to install dependencies and node modules.
 
